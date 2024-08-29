@@ -6,5 +6,19 @@
     <mat-icon matSuffix>pets</mat-icon>
     <mat-hint>Digite o nome do pokémon que deseja buscar</mat-hint>
   </mat-form-field>
-  <button mat-flat-button [disabled]="nameControl.invalid">Procurar</button>
+
+  @if (pokeApiService.loading()) {
+    <mat-spinner></mat-spinner>
+  } @else {
+    <button mat-flat-button [disabled]="nameControl.invalid" (click)="fetchPokemon()">Procurar</button>
+  }
+
+  @if(pokeApiService.pokemonData()){
+    <div class="pokemon">
+      <img [src]="pokeApiService.pokemonData().sprites.front_default" alt="Imagem do pokémon" />
+      <h2>{{ pokeApiService.pokemonData().name }}</h2>
+      <p>{{ pokeApiService.pokemonData().height }} decímetros</p>
+      <p>{{ pokeApiService.pokemonData().weight }} hectogramas</p>
+    </div>
+  }
 </div>
