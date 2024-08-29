@@ -1,1 +1,10 @@
 <app-header></app-header>
+<div class="content">
+  <mat-form-field appearance="outline" class="search">
+    <mat-label>Nome do pokémon</mat-label>
+    <input matInput placeholder="Placeholder" [formControl]="nameControl">
+    <mat-icon matSuffix>pets</mat-icon>
+    <mat-hint>Digite o nome do pokémon que deseja buscar</mat-hint>
+  </mat-form-field>
+  <button mat-flat-button [disabled]="nameControl.invalid">Procurar</button>
+</div>
