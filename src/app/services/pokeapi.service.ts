@@ -13,7 +13,7 @@ export class PokeapiService {
   fetch(pokemonName: string) {
     this.loading.set(true);
     this.pokemonData.set(null);
-    this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName.replaceAll(' ', '-')}`)
+    this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName.replaceAll(' ', '-').toLowerCase()}`)
       .pipe(
         finalize(() => this.loading.set(false))
       )

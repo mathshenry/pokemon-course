@@ -1,0 +1,54 @@
+<mat-card appearance="outlined" class="poke-card">
+  <mat-card-header>
+    <mat-card-title-group class="title-group">
+      @if (pokemon()) {
+        <div class="title">
+          <mat-card-title>{{ pokemon().name | titlecase }}</mat-card-title>
+          <span>{{ pokemon().height / 10 }}m - {{ pokemon().weight / 10 }}kg</span>
+        </div>
+        <img class="image" mat-card-sm-image src="{{ pokemon().sprites.front_default }}">
+      }
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content class="attributes-content">
+    @if (pokemon()?.abilities?.length) {
+      <div class="group">
+        <h3 class="title">Habilidades</h3>
+        <ul class="list">
+          @for (ability of pokemon().abilities; track ability) {
+            <li>{{ ability.ability.name | titlecase }}</li>
+          }
+        </ul>
+      </div>
+    }
+
+    @if (pokemon()?.forms?.length) {
+      <div class="group">
+        <h3 class="title">Outras Formas</h3>
+        <ul class="list">
+          @for (form of pokemon().forms; track form) {
+            <li>{{ form.name | titlecase }}</li>
+          }
+        </ul>
+      </div>
+    }
+
+    @if (pokemon()?.types?.length) {
+      <div class="group">
+        <h3 class="title">Tipos</h3>
+        <ul class="list">
+          @for (type of pokemon().types; track type) {
+            <li>{{ type.type.name | titlecase }}</li>
+          }
+        </ul>
+      </div>
+    }
+
+    @if(pokemon().species) {
+      <div class="group">
+        <h3 class="title">Espécie</h3>
+        <span>{{pokemon().species.name | titlecase}}</span>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>

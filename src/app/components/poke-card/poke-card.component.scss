@@ -1,0 +1,51 @@
+:host {
+  color: var(--blue) !important;
+
+  .poke-card {
+    background-color: var(--yellow);
+    max-width: 360px;
+
+    .title-group {
+      display: flex;
+      justify-content: start;
+
+      .title {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .image {
+        margin-left: auto;
+      }
+    }
+
+    .attributes-content {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 16px;
+      gap: 8px;
+
+      .group {
+        border-radius: 4px;
+        border: 1px solid var(--blue);
+        flex: 1;
+        min-width: 120px;
+        padding: 8px;
+
+        .title {
+          margin: 8px 0;
+        }
+
+        .list {
+          list-style: upper-roman;
+          padding-left: 18px;
+        }
+
+        &:hover {
+          background-color: var(--blue);
+          color: var(--yellow);
+        }
+      }
+    }
+  }
+}

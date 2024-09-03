@@ -13,12 +13,9 @@
     <button mat-flat-button [disabled]="nameControl.invalid" (click)="fetchPokemon()">Procurar</button>
   }
 
-  @if(pokeApiService.pokemonData()){
-    <div class="pokemon">
-      <img [src]="pokeApiService.pokemonData().sprites.front_default" alt="Imagem do pokémon" />
-      <h2>{{ pokeApiService.pokemonData().name }}</h2>
-      <p>{{ pokeApiService.pokemonData().height }} decímetros</p>
-      <p>{{ pokeApiService.pokemonData().weight }} hectogramas</p>
-    </div>
+  @if(pokeApiService.pokemonData(); as pokemon){
+    <app-poke-card [pokemon]="pokemon"></app-poke-card>
+  } @else if (hasSearched() && !pokeApiService.loading()) {
+    <p class="no-data">Nenhum pokémon encontrado</p>
   }
 </div>
